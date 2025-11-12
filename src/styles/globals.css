@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Recipe Blog Light Theme - Modern Neutral with Cozy Accents */
+    --background: 0 0% 98%; /* Clean light gray background */
+    --foreground: 0 0% 15%; /* Near-black text for excellent contrast */
+    --card: 0 0% 100%; /* Pure white cards */
+    --card-foreground: 0 0% 15%; /* Dark text on cards */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 15%;
+    --primary: 35 45% 55%; /* Muted caramel/coffee (keeping for brand) */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+    --secondary: 0 0% 96%; /* Neutral light gray */
+    --secondary-foreground: 0 0% 15%; /* Dark text */
+    --muted: 0 0% 96%; /* Clean neutral gray */
+    --muted-foreground: 0 0% 45%; /* Medium gray */
+    --accent: 25 40% 65%; /* Soft cinnamon/spice (keeping for brand) */
+    --accent-foreground: 0 0% 15%; /* Dark text on accent */
+    --destructive: 0 84% 60%; /* Clear red for errors */
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%; /* Clean neutral border */
+    --input: 0 0% 100%; /* Clean white input background */
+    --ring: 35 45% 55%; /* Caramel focus ring (keeping for brand) */
+    --radius: 0.875rem; /* Soft rounded corners */
+  }
+
+  .dark {
+    /* Recipe Blog Dark Theme - Modern Dark with Cozy Accents */
+    --background: 0 0% 9%; /* Deep neutral gray */
+    --foreground: 0 0% 95%; /* Very light gray text */
+    --card: 0 0% 13%; /* Slightly lighter neutral cards */
+    --card-foreground: 0 0% 95%; /* Light text on cards */
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 35 50% 62%; /* Warmer caramel for dark mode (keeping for brand) */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+    --secondary: 0 0% 18%; /* Neutral dark gray */
+    --secondary-foreground: 0 0% 95%; /* Light text */
+    --muted: 0 0% 18%; /* Neutral muted gray */
+    --muted-foreground: 0 0% 60%; /* Medium light gray */
+    --accent: 25 45% 68%; /* Brighter cinnamon for dark (keeping for brand) */
+    --accent-foreground: 0 0% 100%; /* White on accent */
+    --destructive: 0 84% 65%; /* Clear red for errors */
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 22%; /* Neutral border */
+    --input: 0 0% 18%; /* Neutral dark input background */
+    --ring: 35 50% 62%; /* Caramel focus ring (keeping for brand) */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Enhanced scrollbar styling for recipe blog */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/60 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+  
+  /* Cyworld-inspired decorative elements */
+  .paper-texture {
+    background-image:
+      linear-gradient(45deg, hsl(var(--muted)) 25%, transparent 25%),
+      linear-gradient(-45deg, hsl(var(--muted)) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(var(--muted)) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(var(--muted)) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    opacity: 0.03;
+  }
+
+  /* Soft, warm shadows (coffee-stained feel) */
+  .cozy-shadow {
+    box-shadow:
+      0 2px 4px -1px rgba(101, 67, 33, 0.08),
+      0 4px 8px -2px rgba(101, 67, 33, 0.06);
+  }
+
+  .cozy-shadow-lg {
+    box-shadow:
+      0 4px 6px -1px rgba(101, 67, 33, 0.10),
+      0 10px 20px -3px rgba(101, 67, 33, 0.08);
+  }
+
+  /* Warm gradient (coffee to cream) */
+  .warm-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  /* Vintage dotted border (Cyworld aesthetic) */
+  .dotted-border {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23C4A57B' stroke-width='2' stroke-dasharray='4%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  }
+
+  /* Soft glow effect */
+  .warm-glow {
+    box-shadow: 0 0 20px rgba(196, 165, 123, 0.15);
+  }
+
+  /* Smooth transitions for interactive elements */
+  .cozy-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Scrapbook & Diary Elements */
+
+  /* Handwritten/personal note styling */
+  .handwritten {
+    font-family: var(--font-handwritten), 'Brush Script MT', cursive;
+    line-height: 1.4;
+  }
+
+  /* Coffee stain effect (subtle) */
+  .coffee-stain {
+    position: relative;
+  }
+
+  .coffee-stain::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(161, 117, 80, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Washi tape effect */
+  .washi-tape {
+    position: relative;
+    background: linear-gradient(135deg,
+      rgba(196, 165, 123, 0.3) 0%,
+      rgba(212, 174, 126, 0.25) 50%,
+      rgba(196, 165, 123, 0.3) 100%);
+    border-left: 1px solid rgba(161, 117, 80, 0.15);
+    border-right: 1px solid rgba(161, 117, 80, 0.15);
+  }
+
+  .washi-tape::before,
+  .washi-tape::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(161, 117, 80, 0.1) 2px,
+      rgba(161, 117, 80, 0.1) 4px
+    );
+  }
+
+  .washi-tape::before {
+    top: 0;
+  }
+
+  .washi-tape::after {
+    bottom: 0;
+  }
+
+  /* Polaroid photo frame */
+  .polaroid-frame {
+    background: white;
+    padding: 12px;
+    padding-bottom: 48px;
+    box-shadow:
+      0 2px 4px rgba(101, 67, 33, 0.1),
+      0 8px 16px rgba(101, 67, 33, 0.08);
+    border: 1px solid rgba(242, 230, 214, 0.8);
+  }
+
+  /* Scrapbook page corner fold effect */
+  .page-corner {
+    position: relative;
+  }
+
+  .page-corner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 0;
+    border-color: transparent rgba(161, 117, 80, 0.1) transparent transparent;
+  }
+
+  /* Diary entry styling */
+  .diary-entry {
+    background: linear-gradient(
+      to right,
+      rgba(161, 117, 80, 0.03) 1px,
+      transparent 1px
+    );
+    background-size: 100px 100%;
+    background-position: 40px 0;
+  }
+
+  .diary-entry::before {
+    content: '';
+    position: absolute;
+    left: 35px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(196, 165, 123, 0.2);
+  }
+
+  /* Sticker effect */
+  .sticker {
+    position: relative;
+    padding: 8px 12px;
+    background: white;
+    border: 2px solid rgba(212, 174, 126, 0.3);
+    border-radius: 8px;
+    box-shadow:
+      0 2px 4px rgba(101, 67, 33, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+
+  /* Aged paper effect */
+  .aged-paper {
+    background:
+      linear-gradient(135deg, transparent 24%, rgba(161, 117, 80, 0.02) 25%, rgba(161, 117, 80, 0.02) 26%, transparent 27%, transparent 74%, rgba(161, 117, 80, 0.02) 75%, rgba(161, 117, 80, 0.02) 76%, transparent 77%, transparent),
+      linear-gradient(45deg, transparent 24%, rgba(161, 117, 80, 0.02) 25%, rgba(161, 117, 80, 0.02) 26%, transparent 27%, transparent 74%, rgba(161, 117, 80, 0.02) 75%, rgba(161, 117, 80, 0.02) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+  }
+
+  /* Pin/thumbtack effect */
+  .pin {
+    position: relative;
+  }
+
+  .pin::before {
+    content: '📌';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 20px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    transform: rotate(45deg);
+  }
+}
